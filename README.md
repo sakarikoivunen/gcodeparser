@@ -8,7 +8,7 @@ Non-polished, but working. Will most likely require modifications and at least s
 Usage:
  * Create an user frame for your printing plate
  * Define user frame number and tool number in gcodeparser variables
- * Modify the the JBI header to suit your robot system (remove BC if you don't have a gantry, chech the arm configuration ///RCONF
+ * Modify the the JBI header to suit your robot system (remove BC if you don't have a gantry, check the arm configuration ///RCONF
  * Create g-code file with the slicer of your course
  * Run the parser and try the generated JBI file on your robot (on your own risk, of course, so double check everything)
 
