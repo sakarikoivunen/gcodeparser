@@ -20,6 +20,7 @@ def generate_bc(i_pos):
 
 def parse_gcode(gcode):
     program_instructions=[]
+    first=True
     position_data=[]
     lines = gcode.splitlines()
     z_last = 0.0
@@ -57,6 +58,11 @@ def parse_gcode(gcode):
                 arc_on = False
 
             if x is not None or y is not None:
+                if first:
+                    first=False
+                    position_data.append(xyz_to_position(x,y,z+100,i_pos))
+                    program_instructions.append(f"MOVJ C{i_pos:05d} BC{i_pos:05d} VJ=10.00")
+                    i_pos+=1
                 position_data.append(xyz_to_position(x,y,z,i_pos))
                 program_instructions.append(f"MOVL C{i_pos:05d} BC{i_pos:05d} V={SPEED_PROCESS:.1f}")
     return(position_data, program_instructions)
